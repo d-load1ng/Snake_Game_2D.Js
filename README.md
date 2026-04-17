@@ -1,183 +1,137 @@
 # 🐍 Snake Game 2D
 
-A classic Snake game implementation using vanilla JavaScript, HTML5 Canvas, and CSS.
+A classic Snake game implementation using vanilla JavaScript, HTML5 Canvas, and CSS. No external libraries for game logic.
 
 ![Snake Game Screenshot](https://user-images.githubusercontent.com/82943826/235201219-c93b5e4e-0e6a-4d1f-86d7-2eb24f30243d.png)
 
-## 🎮 Demo
+---
 
-To play the game:
+## ENG
 
-1. Clone this repository
-2. Run `npm install` to install dependencies
-3. Run `npm start` to start the local server
-4. Open your browser and navigate to `http://localhost:8080`
+### Prerequisites
 
-## 🕹️ How to Play
+- Node.js (any recent version)
+- npm
+- A modern browser with HTML5 Canvas support
 
-- Use the arrow keys to control the snake
-- Eat the red food to grow longer and earn points
-- Avoid hitting the walls, obstacles, and yourself
-- The game speeds up every 3 points, increasing difficulty
+### How to run
 
-## 🔧 Technical Implementation
+```bash
+# 1. Clone the repository
+git clone https://github.com/yourusername/snake-game-2d.git
 
-### Architecture
+# 2. Enter the project directory
+cd snake-game-2d
 
-The game is built using an object-oriented approach with the following key classes:
+# 3. Install dependencies
+npm install
 
-- `Snake`: Manages the snake's body, color, and direction
-- `Food`: Handles food generation and positioning
-- `Walls`: Creates and manages obstacles
-- `Cell`: Basic grid cell representation
-- `Game`: Core game engine that coordinates all components
+# 4. Start the local server
+npm start
 
-### Key Features
-
-#### 🐍 Snake Mechanics
-
-```javascript
-class Snake {
-  constructor() {
-    this.body = [
-      { x: 150, y: 150 },
-      { x: 140, y: 150 },
-      { x: 130, y: 150 },
-    ];
-    this.color = "green";
-    this.direction = "R";
-  }
-}
+# 5. Open the game in your browser
+#    Navigate to http://localhost:8080
 ```
 
-The snake is represented as an array of body segments. The first element is the head, which leads the movement. When the snake moves, a new head is added in the direction of movement, and the tail is removed unless the snake eats food.
+### How to play
 
-#### 🍎 Dynamic Food Generation
+- **Arrow keys** — control the snake's direction
+- **Goal** — eat the red food to grow longer and earn points
+- **Avoid** — walls, static obstacles, and the snake's own body
+- **Difficulty** — the game speeds up every 3 points
 
-```javascript
-setRandomPosition() {
-  this.x = this.setRandomPoint();
-  this.y = this.setRandomPoint();
-}
+### Core classes
 
-setRandomPoint() {
-  return Math.round((Math.random() * (300 - 10) + 10) / 10) * 10;
-}
-```
+| Class   | Responsibility                                     |
+| ------- | -------------------------------------------------- |
+| `Snake` | Body segments, color, direction, growth            |
+| `Food`  | Random grid-aligned positioning                    |
+| `Walls` | Static obstacle layout                             |
+| `Cell`  | Basic grid primitive                               |
+| `Game`  | Engine, game loop, scoring, state management       |
 
-Food is randomly positioned on the canvas using a grid-aligned system to ensure food aligns perfectly with the snake's movement.
+### Tech stack
 
-#### 🏆 Progressive Difficulty
+- **Frontend:** HTML5, CSS3, JavaScript (ES6+)
+- **Rendering:** HTML5 Canvas
+- **Dev server:** Node.js with `http-server`
+- **Runtime dependencies:** none for the game logic
 
-```javascript
-if (this.score % 3 === 0) {
-  this.clockSpeed -= this.clockDecrement;
-  clearInterval(this.timer);
-  this.timer = setInterval(this.clockClick.bind(this), this.clockSpeed);
-  this.level += 1;
-}
-```
+### Customization
 
-The game increases in difficulty by speeding up every 3 points earned, creating an increasingly challenging experience.
+The game can be tuned by editing:
 
-#### 🧱 Obstacle System
-
-```javascript
-class Walls {
-  constructor() {
-    this.color = "white";
-    this.bricks = [
-      { x: 200, y: 200 },
-      { x: 190, y: 200 },
-      // More wall positions...
-    ];
-  }
-}
-```
-
-Static obstacles are placed on the game board, adding complexity to navigation.
-
-#### 🎮 Collision Detection
-
-The game implements comprehensive collision detection for:
-- Self-collision (snake hitting itself)
-- Wall collision
-- Obstacle collision
-- Food collection
-
-#### 🏁 Game Over & Reset
-
-```javascript
-resetGame() {
-  this.clockSpeed = this.clockSpeedInitial;
-  clearInterval(this.timer);
-  this.timer = setInterval(this.clockClick.bind(this), this.clockSpeed);
-  this.vel = { x: 10, y: 0 };
-  this.score = 0;
-  this.snake = new Snake();
-  this.food = new Food();
-  // More reset logic...
-}
-```
-
-Complete game reset functionality allows for seamless replay after game over.
-
-## 🎨 Visual Design
-
-The game features:
-- Custom pixel font styling
-- Retro-style UI with glowing effects
-- Grid-based movement
-- Score and level display
-- High score tracking
-
-## 🛠️ Technical Stack
-
-- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-- **Rendering**: HTML5 Canvas
-- **Build/Dev**: Node.js with http-server for local development
-- **Dependencies**: No external libraries for game logic - pure vanilla JS
-
-## 🔄 Game Loop
-
-The game utilizes a timer-based game loop system:
-
-```javascript
-clockClick() {
-  this.generateMove();
-  this.checkGrow();
-  this.GameOver();
-  // Drawing operations
-  this.clearCanvas();
-  this.drawWalls();
-  this.drawSnake();
-  this.drawFood();
-  this.drawScore();
-  this.drawHighScore();
-  this.drawLevel();
-}
-```
-
-This function handles all game state updates and rendering operations on each clock cycle.
-
-## 📐 Customization
-
-The game can be easily customized by modifying:
 - Canvas dimensions
-- Snake speed and growth
-- Obstacle layouts
-- Difficulty progression
-- Visual styling through CSS
+- Snake initial speed and growth rate
+- Obstacle layout in the `Walls` class
+- Difficulty curve (score threshold, speed decrement)
+- Visual styling via CSS
 
-## 📋 Future Enhancements
 
-Potential improvements that could be added:
-- Mobile touch controls
-- Power-ups and special food items
-- Multiple game modes
-- Leaderboard system
-- Sound effects and music
+---
 
-## 📄 License
 
-ISC License - See LICENSE file for details.
+## ITA
+
+### Panoramica
+
+Remake browser del classico gioco arcade Snake. 
+
+### Prerequisiti
+
+- Node.js (qualsiasi versione recente)
+- npm
+- Un browser moderno con supporto HTML5 Canvas
+
+### Come eseguirlo
+
+```bash
+# 1. Clona il repository
+git clone https://github.com/yourusername/snake-game-2d.git
+
+# 2. Entra nella directory del progetto
+cd snake-game-2d
+
+# 3. Installa le dipendenze
+npm install
+
+# 4. Avvia il server locale
+npm start
+
+# 5. Apri il gioco nel browser
+#    Vai su http://localhost:8080
+```
+
+### Come giocare
+
+- **Frecce direzionali** — controllano la direzione dello snake
+- **Obiettivo** — mangia il cibo rosso per crescere e guadagnare punti
+- **Evita** — muri, ostacoli statici e il corpo dello snake stesso
+- **Difficoltà** — il gioco accelera ogni 3 punti
+
+### Classi principali
+
+| Classe  | Responsabilità                                     |
+| ------- | -------------------------------------------------- |
+| `Snake` | Segmenti del corpo, colore, direzione, crescita    |
+| `Food`  | Posizionamento casuale allineato alla griglia      |
+| `Walls` | Disposizione degli ostacoli statici                |
+| `Cell`  | Primitiva di base della griglia                    |
+| `Game`  | Motore, game loop, punteggio, gestione dello stato |
+
+### Stack tecnico
+
+- **Frontend:** HTML5, CSS3, JavaScript (ES6+)
+- **Rendering:** HTML5 Canvas
+- **Server di sviluppo:** Node.js con `http-server`
+- **Dipendenze a runtime:** nessuna per la logica di gioco
+
+### Personalizzazione
+
+Il gioco può essere regolato modificando:
+
+- Dimensioni del canvas
+- Velocità iniziale e tasso di crescita dello snake
+- Layout degli ostacoli nella classe `Walls`
+- Curva di difficoltà (soglia di punteggio, decremento di velocità)
+- Stile visivo tramite CSS
