@@ -35,10 +35,10 @@ npm start
 
 ### How to play
 
-- **Arrow keys** — control the snake's direction
-- **Goal** — eat the red food to grow longer and earn points
-- **Avoid** — walls, static obstacles, and the snake's own body
-- **Difficulty** — the game speeds up every 3 points
+- **Arrow keys**: control the snake's direction
+- **Goal**: eat the red food to grow longer and earn points
+- **Avoid**: walls, static obstacles, and the snake's own body
+- **Difficulty**: the game speeds up every 3 points
 
 ### Core classes
 
@@ -104,10 +104,10 @@ npm start
 
 ### Come giocare
 
-- **Frecce direzionali** — controllano la direzione dello snake
-- **Obiettivo** — mangia il cibo rosso per crescere e guadagnare punti
-- **Evita** — muri, ostacoli statici e il corpo dello snake stesso
-- **Difficoltà** — il gioco accelera ogni 3 punti
+- **Frecce direzionali**: controllano la direzione dello snake
+- **Obiettivo**: mangia il cibo rosso per crescere e guadagnare punti
+- **Evita**: muri, ostacoli statici e il corpo dello snake stesso
+- **Difficoltà**: il gioco accelera ogni 3 punti
 
 ### Classi principali
 
